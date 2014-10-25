@@ -139,9 +139,6 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
     var data = $scope.dailyData;
     window.dailyData = data;
 
-    var weekDate = _.find(data, function(el) {
-      return el.date == moment().subtract(1, 'week').format('YYYY-MM-DD')
-    });
     var monthDate = _.find(data, function(el) {
       return el.date == moment().subtract(1, 'month').format('YYYY-MM-DD')
     });
@@ -154,11 +151,14 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
     var fiveYearDate = _.find(data, function(el) {
       return el.date == moment().subtract(5, 'year').format('YYYY-MM-DD')
     });
-    
+
 
     var ic = $scope.initialCapital;
     $scope.pl = {
-      week: weekDate ? (weekDate.open * ic) : 'N/A'
+      month: monthDate ? (monthDate.open * ic) : 'N/A',
+      threeMonth: threeMonthDate ? (threeMonthDate.open * ic) : 'N/A',
+      year: yearDate ? (yearDate.open * ic) : 'N/A',
+      fiveYear: fiveYearDate ? (fiveYearDate.open * ic) : 'N/A'
     };
   }
 

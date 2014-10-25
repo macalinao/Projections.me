@@ -2,13 +2,30 @@
 
   <div class="row">
     <div class="col-md-12">
-      <h1>Apple Inc (AAPL)</h1>
+      <h1>{{stockData.name}} ({{stockData.symbol}})</h1>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-4">
-      Tabular info goes here, along with ranking for the fields.
+      <table class="table table-striped">
+        <tr>
+          <th>Last</th>
+          <td>{{stockData.last}}</td>
+        </tr>
+        <tr>
+          <th>News Sentiment</th>
+          <td>{{stockData.newsSentiment}}</td>
+        </tr>
+        <tr>
+          <th>Twitter Sentiment</th>
+          <td>{{stockData.twitterSentiment}}</td>
+        </tr>
+        <tr>
+          <th>Recommendation</th>
+          <td>{{stockData.eqyRecCons}}</td>
+        </tr>
+      </table>
     </div>
     <div class="col-md-8">
       Chart goes here.

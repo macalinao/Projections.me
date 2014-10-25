@@ -39,28 +39,28 @@ angular.module('projections', ['ui.router'])
     }];
   })
 
-  .controller('HomeCtrl', function($scope, fields, $http) {
-    $scope.fields = fields;
-    $scope.field = fields[0];
+.controller('HomeCtrl', function($scope, fields, $http) {
+  $scope.fields = fields;
+  $scope.field = fields[0];
 
-    $scope.best = [];
-    $scope.worst = [];
+  $scope.best = [];
+  $scope.worst = [];
 
-    function updateLists() {
-      var fieldId = $scope.field.id;
-      $http.get('/api/all').success(function(data) {
-        $scope.best = _.first(data.sort(function(a, b) {
-          return b[fieldId] - a[fieldId];
-        }), 10);
-        $scope.worst = _.first(data.sort(function(a, b) {
-          return a[fieldId] - b[fieldId];
-        }), 10);
-      });
-    }
+  function updateLists() {
+    var fieldId = $scope.field.id;
+    $http.get('/api/all').success(function(data) {
+      $scope.best = _.first(data.sort(function(a, b) {
+        return b[fieldId] - a[fieldId];
+      }), 10);
+      $scope.worst = _.first(data.sort(function(a, b) {
+        return a[fieldId] - b[fieldId];
+      }), 10);
+    });
+  }
 
-    $scope.$watch('field', updateLists);
-    updateLists();
-  })
+  $scope.$watch('field', updateLists);
+  updateLists();
+})
 
 .controller('StockCtrl', function($scope, $http, $routeParams) {
   var symbol = $routeParams.symbol;
@@ -71,4 +71,6 @@ angular.module('projections', ['ui.router'])
       return el.symbol == symbol;
     });
   });
+
+
 });

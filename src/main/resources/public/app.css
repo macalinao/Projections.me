@@ -7,23 +7,23 @@
 }
 
 .strong-buy {
-  background-color: #11644D;
+  background-color: #11644D !important;
 }
 
 .weak-buy {
-  background-color: #A0B046;
+  background-color: #A0B046 !important;
 }
 
 .hold {
-  background-color: #F2C94E;
+  background-color: #F2C94E !important;
 }
 
 .weak-sell {
-  background-color: #F78145;
+  background-color: #F78145 !important;
 }
 
 .strong-sell {
-  background-color: #F24E4E;
+  background-color: #F24E4E !important;
 }
 
 td.rec {

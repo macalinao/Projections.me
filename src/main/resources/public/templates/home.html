@@ -1,8 +1,7 @@
 <div class="container">
 
   <div class="row">
-    <select ng-model="field">
-      <option ng-repeat="(key, name) in fields" value="key">{{name}}</option>
+    <select ng-model="field" ng-options="fields">
     </select>
   </div>
 

@@ -1,19 +1,20 @@
 angular.module('projections', ['ui.bootstrap', 'ui.router'])
-  .config(function($stateProvider, $urlRouterProvider) {
-    $stateProvider
-      .state('home', {
-        url: '/',
-        templateUrl: 'templates/home.html',
-        controller: 'HomeCtrl'
-      })
-      .state('stock', {
-        url: '/stock/:symbol',
-        templateUrl: 'templates/stock.html',
-        controller: 'StockCtrl'
-      });
 
-    $urlRouterProvider.otherwise('/');
-  })
+.config(function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('home', {
+      url: '/',
+      templateUrl: 'templates/home.html',
+      controller: 'HomeCtrl'
+    })
+    .state('stock', {
+      url: '/stock/:symbol',
+      templateUrl: 'templates/stock.html',
+      controller: 'StockCtrl'
+    });
+
+  $urlRouterProvider.otherwise('/');
+})
 
 .factory('fields', function() {
   return [{

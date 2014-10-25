@@ -91,6 +91,7 @@ angular.module('projections', ['ui.router'])
 
   $scope.stockData = {};
   allData.subscribe(function(data) {
+    console.log(data);
     $scope.stockData = _.find(data, function(el) {
       return el.symbol == symbol;
     });
@@ -101,7 +102,6 @@ angular.module('projections', ['ui.router'])
     var dataMapped = _.map(data, function(el) {
       return [new Date(el.date), el.open];
     });
-    console.log(dataMapped);
 
     $('#stockChart').highcharts('StockChart', {
       rangeSelector: {

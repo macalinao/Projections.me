@@ -188,10 +188,10 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
 
     var ic = $scope.initialCapital;
     $scope.pl = {
-      month: monthDate ? ((last - monthDate.open) / last) * ic : 'N/A',
-      threeMonth: threeMonthDate ? ((last - threeMonthDate.open) / last) * ic : 'N/A',
-      year: yearDate ? ((last - yearDate.open) / last) * ic : 'N/A',
-      fiveYear: fiveYearDate ? ((last - fiveYearDate.open) / last) * ic : 'N/A'
+      month: monthDate ? ((last - monthDate.open) / monthDate.open) * ic : 'N/A',
+      threeMonth: threeMonthDate ? ((last - threeMonthDate.open) / threeMonthDate.open) * ic : 'N/A',
+      year: yearDate ? ((last - yearDate.open) / yearDate.open) * ic : 'N/A',
+      fiveYear: fiveYearDate ? ((last - fiveYearDate.open) / fiveYearDate.open) * ic : 'N/A'
     };
   }
 

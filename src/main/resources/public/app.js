@@ -27,5 +27,5 @@ angular.module('projections', ['ui.router'])
 })
 .controller('HomeCtrl', function($scope, fields) {
   $scope.fields = fields;
-  $scope.field = 'eqyRecCons';
+  $scope.field = fields.eqyRecCons;
 });

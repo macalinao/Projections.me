@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="row">
-    <select ng-model="field" ng-options="fields">
+    <select ng-model="field" ng-options="f for (key, f) in fields">
     </select>
   </div>
 

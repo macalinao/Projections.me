@@ -125,7 +125,6 @@ public class Bloomberg {
                 }
 
                 // Processing
-                System.out.println(msg);
                 Element securityDataArray = msg.getElement("securityData");
 
                 for (int i = 0; i < securityDataArray.numValues(); i++) {
@@ -146,7 +145,7 @@ public class Bloomberg {
                         data.put("newsSentiment", fieldData.getElementAsFloat64("NEWS_SENTIMENT"));
                         data.put("twitterSentiment", fieldData.getElementAsFloat64("TWITTER_SENTIMENT_REALTIME"));
                         data.put("vwapStdDev", fieldData.getElementAsFloat64("VWAP_STANDARD_DEV_RT"));
-                        data.put("eqyRecCons", fieldData.getElementAsFloat64("EQY_REC_CONS"));
+                        data.put("eqyRecCons", Math.round(fieldData.getElementAsFloat64("EQY_REC_CONS") * 100) / 100);
 
                         ret.add(data);
                     } catch (Exception e) {
@@ -195,8 +194,6 @@ public class Bloomberg {
                 if (msg.correlationID() != theCid) {
                     continue;
                 }
-
-                System.out.println(msg);
 
                 // Processing
                 Element securityData = msg.getElement("securityData");

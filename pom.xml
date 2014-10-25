@@ -50,7 +50,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.easybacktest.backend.EasyBacktest</mainClass>
+                            <mainClass>me.projections.site.ProjectionsApp</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

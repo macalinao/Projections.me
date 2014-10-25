@@ -142,7 +142,7 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
   (new Spinner()).spin(document.getElementById('spinna'));
 
   $http.get('/api/stock/' + symbol).success(function(data) {
-    $('#spinner').remove();
+    $('#spinna').remove();
     $scope.dailyData = data;
 
     var dataMapped = _.map(data, function(el) {

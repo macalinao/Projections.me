@@ -1,5 +1,5 @@
 .amap {
-  width: 100%;
+  width: 70%;
 }
 
 .centered {
@@ -7,11 +7,11 @@
 }
 
 .strong-buy {
-  background-color: #11644D !important;
+  background-color: #00C04B !important;
 }
 
 .weak-buy {
-  background-color: #A0B046 !important;
+  background-color: #EADE5D !important;
 }
 
 .hold {
@@ -104,4 +104,20 @@ a, i.ionicons {
 #spinner {
   width: 100%;
   height: 500px;
+}
+.page-header {
+	color: #555;
+	font-weight: bold;
+	border-bottom: 0;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td	{
+	border: none !important;
+	padding: 15px;
+}
+.back {
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: 20px;
+	font-size: 1.5em;
 }

@@ -141,16 +141,16 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
     window.dailyData = data;
 
     var monthDate = _.find(data, function(el) {
-      return el.date == moment().subtract(1, 'month').format('YYYY-MM-DD')
+      return el.date == moment().subtract(1, 'month').day('Monday').format('YYYY-MM-DD')
     });
     var threeMonthDate = _.find(data, function(el) {
-      return el.date == moment().subtract(3, 'month').format('YYYY-MM-DD')
+      return el.date == moment().subtract(3, 'month').day('Monday').format('YYYY-MM-DD')
     });
     var yearDate = _.find(data, function(el) {
-      return el.date == moment().subtract(1, 'year').format('YYYY-MM-DD')
+      return el.date == moment().subtract(1, 'year').day('Monday').format('YYYY-MM-DD')
     });
     var fiveYearDate = _.find(data, function(el) {
-      return el.date == moment().subtract(5, 'year').format('YYYY-MM-DD')
+      return el.date == moment().subtract(5, 'year').day('Monday').format('YYYY-MM-DD')
     });
 
 

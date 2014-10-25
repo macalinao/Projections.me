@@ -77,6 +77,7 @@ angular.module('projections', ['ui.router'])
     var dataMapped = _.map(data, function(el) {
       return [el.date, el.open];
     });
+    console.log(dataMapped);
 
     $('#stockChart').highcharts('StockChart', {
       rangeSelector: {

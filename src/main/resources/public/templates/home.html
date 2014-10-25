@@ -1,56 +1,58 @@
-<div class="container">
-
-  <div class="row">
-    <div class="col-md-offset-3 col-md-6 centered">
+  <div class="row heading">
+    <div class="background"></div>
+    <a href="/"><i class="home ionicons ion-home"></i></a>
+    <div class="col-md-offset-3 col-md-6">
       <h2>Search for an S&P 500 stock</h2>
       <form class="inline" ng-submit="searchStock()">
         <div class="form-group">
-          <input type="text" class="form-control" ng-model="symbol" />
+          <input type="text" class="form-control" ng-model="symbol" placeholder="Ex. MSFT, IBM, AAPL"/>
         </div>
       </form>
-      <h2>- or -</h2>
-      <h2>Select a field to sort by</h2>
-      <select ng-model="field" ng-options="f.name for f in fields">
-      </select>
-      </select>
     </div>
+  </div>
 
-    <div class="row">
-
-      <div class="col-md-6">
-        <h2 class="page-header">Best Stocks</h2>
-        <table class="table table-striped">
-          <tr>
-            <th>#</th>
-            <th class="amap">Security Name</th>
-            <th>{{field.name}}</th>
-          </tr>
-          <tr ng-repeat="item in best">
-            <td>{{$index + 1}}</td>
-            <td>
-              <a ng-href="#/stock/{{item.symbol}}">{{item.name}}</a>
-            </td>
-            <td>{{item[field.id] | number:2}}</td>
-          </tr>
-        </table>
+  <div class="row body">
+    <div class="container">
+        <div class="or"> OR </div>
+      <div class="row sorting">
+        Sort By <select ng-model="field" ng-options="f.name for f in fields"></select>
       </div>
+      <div class="row">
+        <div class="col-md-6">
+          <h2 class="page-header">Best Stocks</h2>
+          <table class="table table-striped">
+            <tr>
+              <th>#</th>
+              <th class="amap">Security Name</th>
+              <th>{{field.name}}</th>
+            </tr>
+            <tr ng-repeat="item in best">
+              <td>{{$index + 1}}</td>
+              <td>
+                <a ng-href="#/stock/{{item.symbol}}">{{item.name}}</a>
+              </td>
+              <td>{{item[field.id] | number:2}}</td>
+            </tr>
+          </table>
+        </div>
 
-      <div class="col-md-6">
-        <h2 class="page-header">Worst Stocks</h2>
-        <table class="table table-striped">
-          <tr>
-            <th>#</th>
-            <th class="amap">Security Name</th>
-            <th>{{field.name}}</th>
-          </tr>
-          <tr ng-repeat="item in worst">
-            <td>{{$index + 1}}</td>
-            <td>
-              <a ng-href="#/stock/{{item.symbol}}">{{item.name}}</a>
-            </td>
-            <td>{{item[field.id] | number:2}}</td>
-          </tr>
-        </table>
+        <div class="col-md-6">
+          <h2 class="page-header">Worst Stocks</h2>
+          <table class="table table-striped">
+            <tr>
+              <th>#</th>
+              <th class="amap">Security Name</th>
+              <th>{{field.name}}</th>
+            </tr>
+            <tr ng-repeat="item in worst">
+              <td>{{$index + 1}}</td>
+              <td>
+                <a ng-href="#/stock/{{item.symbol}}">{{item.name}}</a>
+              </td>
+              <td>{{item[field.id] | number:2}}</td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </div>

@@ -10,9 +10,13 @@ font-family: 'Open Sans', sans-serif;	/*background: #D6E4EC;*/
 
 footer {
 	text-align: center;
-	padding: 50px 0;
-	color: #ADADAD;
+	padding: 20px 0;
+	color: #FFF;
 	font-size: 14px;
+	position:absolute;
+	bottom:0;
+	width:100%;
+	color: rgba(255,255,255,0.4);
 }
 
 /*slide*/
@@ -35,7 +39,7 @@ footer {
 
 #splash {
 	background: url(../img/splash4.jpg);
-	background-size: 100%;
+	background-size: cover;
 }
 
 #splash .logo {
@@ -255,6 +259,12 @@ header.main {
 #startLink {
 	-webkit-animation-duration: 2s;
 	-webkit-animation-delay: 1s;
+	transition: 200ms ease-in-out;
+
+}
+
+#startLink:hover {
+	padding-right:80px;
 }
 
 .hide {

@@ -106,27 +106,27 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
 
     if (rating > 4.5) {
       n = {
-        color: '#11644D',
+        style: 'strong-buy',
         text: 'Strong Buy'
       };
     } else if (rating > 3.75) {
       n = {
-        color: '#A0B046',
+        style: 'weak-buy',
         text: 'Weak Buy'
       };
     } else if (rating > 3) {
       n = {
-        color: '#F2C94E',
+        style: 'hold',
         text: 'Hold'
       };
     } else if (rating > 2) {
       n = {
-        color: '#F78145',
+        style: 'weak-sell',
         text: 'Weak Sell'
       };
     } else {
       n = {
-        color: '#F24E4E',
+        style: 'strong-sell',
         text: 'Strong Sell'
       };
     }

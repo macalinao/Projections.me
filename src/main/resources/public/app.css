@@ -5,3 +5,23 @@
 .centered {
   text-align: center;
 }
+
+.strong-buy {
+  background-color: '#11644D';
+}
+
+.weak-buy {
+  background-color: '#A0B046';
+}
+
+.hold {
+  background-color: '#F2C94E';
+}
+
+.weak-sell {
+  background-color: '#F78145';
+}
+
+.strong-sell {
+  background-color: '#F24E4E';
+}

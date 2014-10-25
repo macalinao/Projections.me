@@ -39,7 +39,7 @@ angular.module('projections', ['ui.router'])
     }];
   })
 
-  .controller('HomeCtrl', function($scope, fields) {
+  .controller('HomeCtrl', function($scope, fields, $http) {
     $scope.fields = fields;
     $scope.field = fields[0];
 

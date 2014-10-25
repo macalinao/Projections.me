@@ -101,3 +101,7 @@ a, i.ionicons {
 .heading .home:hover {
 	color: #FFF;	
 }
+#spinner {
+  width: 100%;
+  height: 500px;
+}

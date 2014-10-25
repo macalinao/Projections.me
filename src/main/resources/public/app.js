@@ -64,7 +64,7 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
   return ret;
 })
 
-.controller('HomeCtrl', function($scope, fields, $http, allData) {
+.controller('HomeCtrl', function($scope, fields, $http, allData, $location) {
   $scope.fields = fields;
   $scope.field = fields[0];
 
@@ -85,6 +85,11 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
 
   $scope.$watch('field', updateLists);
   updateLists();
+
+  $scope.searchStock = function() {
+    var symbol = $scope.symbol.toUpperCase().trim();
+    $location.href('#/stock/' + symbol);
+  };
 })
 
 .controller('StockCtrl', function($scope, $http, $stateParams, allData) {

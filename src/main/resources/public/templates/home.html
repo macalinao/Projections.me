@@ -1,46 +1,54 @@
 <div class="container">
 
   <div class="row">
-    <select ng-model="field" ng-options="f.name for f in fields">
-    </select>
-  </div>
-
-  <div class="row">
-
-    <div class="col-md-6">
-      <h2>Best Stocks</h2>
-      <table class="table table-striped">
-        <tr>
-          <th>#</th>
-          <th class="amap">Security Name</th>
-          <th>{{field.name}}</th>
-        </tr>
-        <tr ng-repeat="item in best">
-          <td>{{$index + 1}}</td>
-          <td>
-            <a ng-href="#/stock/{{item.symbol}}">{{item.name}}</a>
-          </td>
-          <td>{{item[field.id] | number:2}}</td>
-        </tr>
-      </table>
+    <div class="col-md-12 centered">
+      <h2>Search for an S&P 500 stock</h2>
+      <form ng-submit="searchStock()">
+        <input type="text" ng-model="symbol" />
+      </form>
+      <h2>- or </h2>
+      <h2>Select a field to sort by</h2>
+      <select ng-model="field" ng-options="f.name for f in fields">
+      </select>
+      </select>
     </div>
 
-    <div class="col-md-6">
-      <h2>Worst Stocks</h2>
-      <table class="table table-striped">
-        <tr>
-          <th>#</th>
-          <th class="amap">Security Name</th>
-          <th>{{field.name}}</th>
-        </tr>
-        <tr ng-repeat="item in worst">
-          <td>{{$index + 1}}</td>
-          <td>
-            <a ng-href="#/stock/{{item.symbol}}">{{item.name}}</a>
-          </td>
-          <td>{{item[field.id] | number:2}}</td>
-        </tr>
-      </table>
+    <div class="row">
+
+      <div class="col-md-6">
+        <h2 class="page-header">Best Stocks</h2>
+        <table class="table table-striped">
+          <tr>
+            <th>#</th>
+            <th class="amap">Security Name</th>
+            <th>{{field.name}}</th>
+          </tr>
+          <tr ng-repeat="item in best">
+            <td>{{$index + 1}}</td>
+            <td>
+              <a ng-href="#/stock/{{item.symbol}}">{{item.name}}</a>
+            </td>
+            <td>{{item[field.id] | number:2}}</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="col-md-6">
+        <h2 class="page-header">Worst Stocks</h2>
+        <table class="table table-striped">
+          <tr>
+            <th>#</th>
+            <th class="amap">Security Name</th>
+            <th>{{field.name}}</th>
+          </tr>
+          <tr ng-repeat="item in worst">
+            <td>{{$index + 1}}</td>
+            <td>
+              <a ng-href="#/stock/{{item.symbol}}">{{item.name}}</a>
+            </td>
+            <td>{{item[field.id] | number:2}}</td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
-</div>

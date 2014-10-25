@@ -13,7 +13,7 @@
       <table class="table table-striped">
         <tr>
           <th>Last</th>
-          <td>{{stockData.last}}</td>
+          <td>{{stockData.last | currency}}</td>
         </tr>
         <tr>
           <th>News Sentiment</th>
@@ -25,7 +25,7 @@
         </tr>
         <tr>
           <th>Recommendation</th>
-          <td>{{stockData.eqyRecCons}}</td>
+          <td>{{stockData.eqyRecCons | number:2}}</td>
         </tr>
       </table>
 

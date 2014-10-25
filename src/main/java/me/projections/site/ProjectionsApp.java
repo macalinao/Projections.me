@@ -27,5 +27,14 @@ public class ProjectionsApp {
                 return "omg";
             }
         });
+
+        get("/api/stock/:symbol", "application/json", (request, response) -> {
+            try {
+                return QuickJson.toJson(b.getIndividualStockData(request.params("symbol")));
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "fml";
+            }
+        });
     }
 }

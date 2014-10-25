@@ -16,8 +16,10 @@ import com.bloomberglp.blpapi.Session;
 import com.bloomberglp.blpapi.SessionOptions;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -150,6 +152,67 @@ public class Bloomberg {
                     } catch (Exception e) {
                         continue;
                     }
+                }
+
+            }
+            if (event.eventType() == Event.EventType.RESPONSE) {
+                return ret;
+            }
+        }
+    }
+
+    public List<Map<String, Object>> getIndividualStockData(String stock) {
+        List<Map<String, Object>> ret = new ArrayList<>();
+
+        Service refDataService = session.getService("//blp/refdata");
+        Request request = refDataService.createRequest("HistoricalDataRequest");
+        request.append("securities", stock + " US Equity");
+        request.append("fields", "OPEN");
+        request.set("startDate", "19700101");
+        request.set("endDate", (new SimpleDateFormat("yyyyMMdd")).format(new Date()));
+        request.set("periodicitySelection", "DAILY");
+
+        CorrelationID theCid;
+        try {
+            theCid = session.sendRequest(request, null);
+        } catch (IOException ex) {
+            Logger.getLogger(Bloomberg.class.getName()).log(Level.SEVERE, null, ex);
+            return ret;
+        }
+
+        for (;;) {
+            Event event;
+            try {
+                event = session.nextEvent();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Bloomberg.class.getName()).log(Level.SEVERE, null, ex);
+                return ret;
+            }
+
+            MessageIterator msgIter = event.messageIterator();
+            while (msgIter.hasNext()) {
+                Message msg = msgIter.next();
+                if (msg.correlationID() != theCid) {
+                    continue;
+                }
+
+                System.out.println(msg);
+
+                // Processing
+                Element securityData = msg.getElement("securityData");
+                Element fieldDataArr = securityData.getElement("fieldData");
+
+                for (int j = 0; j < fieldDataArr.numValues(); ++j) {
+                    Element fieldData = fieldDataArr.getValueAsElement(j);
+
+                    try {
+                        Map<String, Object> di = new HashMap<>();
+                        di.put("date", DATE_FORMAT.format(DATE_FORMAT.parse(fieldData.getElementAsString("date"))));
+                        di.put("open", fieldData.getElementAsFloat64("OPEN"));
+                        ret.add(di);
+                    } catch (Exception ex) {
+                    }
+
                 }
 
             }

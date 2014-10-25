@@ -75,7 +75,7 @@ angular.module('projections', ['ui.router'])
   $http.get('/api/stock/' + symbol).success(function(data) {
 
     var dataMapped = _.map(data, function(el) {
-      return [el.date, el.open];
+      return [new Date(el.date), el.open];
     });
     console.log(dataMapped);
 

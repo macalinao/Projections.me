@@ -184,14 +184,18 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
     var fiveYearDate = _.find(data, function(el) {
       return el.date == moment().subtract(5, 'year').day('Monday').format('YYYY-MM-DD')
     });
+    var tenYearDate = _.find(data, function(el) {
+      return el.date == moment().subtract(10, 'year').day('Monday').format('YYYY-MM-DD')
+    });
 
 
     var ic = $scope.initialCapital;
     $scope.pl = {
-      month: monthDate ? (ic / monthDate.open * last): 'N/A',
-      threeMonth: threeMonthDate ? (ic / threeMonthDate.open * last): 'N/A',
-      year: yearDate ? (ic / yearDate.open * last): 'N/A',
-      fiveYear: fiveYearDate ? (ic / fiveYearDate.open * last) : 'N/A'
+      month: monthDate ? (ic / monthDate.open * last) - ic: 'N/A',
+      threeMonth: threeMonthDate ? (ic / threeMonthDate.open * last) - ic: 'N/A',
+      year: yearDate ? (ic / yearDate.open * last) - ic: 'N/A',
+      fiveYear: fiveYearDate ? (ic / fiveYearDate.open * last) - ic : 'N/A',
+      tenYear: tenYearDate ? (ic / tenYearDate.open * last) - ic : 'N/A'
     };
   }
 

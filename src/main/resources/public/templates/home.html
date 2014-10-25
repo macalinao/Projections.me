@@ -1,9 +1,9 @@
 <div class="container">
 
   <div class="row">
-    <div class="btn-group">
-      <label class="btn btn-primary" ng-model="field" ng-repeat="f in fields" btn-radio="'{{f.id}}'">{{f.name}}</label>
-    </div>
+    <select ng-model="field">
+      <option ng-repeat="f in fields">{{f.name}}</label>
+    </select>
   </div>
 
   <div class="row">
@@ -21,7 +21,7 @@
           <td>
             <a ng-href="#/stock/{{item.symbol}}">{{item.name}}</a>
           </td>
-          <td>{{item[field] | number:2}}</td>
+          <td>{{item[field.id] | number:2}}</td>
         </tr>
       </table>
     </div>
@@ -32,7 +32,7 @@
         <tr>
           <th>#</th>
           <th class="amap">Security Name</th>
-          <th>{{fields.get(field)}}</th>
+          <th>{{field.name}}</th>
         </tr>
         <tr ng-repeat="item in worst">
           <td>{{$index + 1}}</td>

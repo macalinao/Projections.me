@@ -137,6 +137,7 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
 
   function calculatePl() {
     var data = $scope.dailyData;
+    window.dailyData = data;
 
     var weekDate = _.find(data, function(el) {
       return el.date == moment().subtract(1, 'week').format('yyyy-MM-dd')

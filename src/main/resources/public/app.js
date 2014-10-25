@@ -139,7 +139,10 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
 
   $scope.dailyData = [];
 
+  (new Spinner()).spin(document.getElementById('chart'));
+
   $http.get('/api/stock/' + symbol).success(function(data) {
+    $('.spinner').remove();
     $scope.dailyData = data;
 
     var dataMapped = _.map(data, function(el) {

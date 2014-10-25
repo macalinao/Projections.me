@@ -88,7 +88,7 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
 
   $scope.searchStock = function() {
     var symbol = $scope.symbol.toUpperCase().trim();
-    $location.href('#/stock/' + symbol);
+    $location.path('#/stock/' + symbol);
   };
 })
 

@@ -22,7 +22,7 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
     name: 'Buy Rating'
   }, {
     id: 'marketCap',
-    name: 'Market Cap (millions)'
+    name: 'Market Cap'
   }, {
     id: 'last',
     name: 'Last'

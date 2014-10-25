@@ -17,15 +17,15 @@
         </tr>
         <tr>
           <th>News Sentiment</th>
-          <td>{{stockData.newsSentiment}}</td>
+          <td>{{stockData.newsSentiment | number:2}}</td>
         </tr>
         <tr>
           <th>Twitter Sentiment</th>
-          <td style="background-color: '{{stockData.ratingNice.color}}'">{{stockData.ratingNice.text}} ({{stockData.twitterSentiment}})</td>
+          <td>{{stockData.twitterSentiment | number:2}}</td>
         </tr>
         <tr>
           <th>Recommendation</th>
-          <td>{{stockData.eqyRecCons | number:2}}</td>
+          <td bgcolor="stockData.ratingNice.color">{{stockData.ratingNice.text}} ({{stockData.eqyRecCons | number:2}})</td>
         </tr>
       </table>
 

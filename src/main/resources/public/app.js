@@ -14,30 +14,31 @@ angular.module('projections', ['ui.router'])
 
     $urlRouterProvider.otherwise('/');
   })
-  .factory('fields', function() {
-    return [{
-      id: 'eqyRecCons',
-      name: 'Buy Rating'
-    }, {
-      id: 'last',
-      name: 'Last'
-    }, {
-      id: 'high',
-      name: 'High'
-    }, {
-      id: 'low',
-      name: 'Low'
-    }, {
-      id: 'close',
-      name: 'Close'
-    }, {
-      id: 'newsSentiment',
-      name: 'News Sentiment'
-    }, {
-      id: 'twitterSentiment',
-      name: 'Twitter Sentiment'
-    }];
-  })
+
+.factory('fields', function() {
+  return [{
+    id: 'eqyRecCons',
+    name: 'Buy Rating'
+  }, {
+    id: 'last',
+    name: 'Last'
+  }, {
+    id: 'high',
+    name: 'High'
+  }, {
+    id: 'low',
+    name: 'Low'
+  }, {
+    id: 'close',
+    name: 'Close'
+  }, {
+    id: 'newsSentiment',
+    name: 'News Sentiment'
+  }, {
+    id: 'twitterSentiment',
+    name: 'Twitter Sentiment'
+  }];
+})
 
 .factory('allData', function($http) {
   var ret = {
@@ -46,6 +47,7 @@ angular.module('projections', ['ui.router'])
     subscribe: function(cb) {
       if (this.data.length > 0) {
         cb(this.data);
+        return;
       }
       this.subs.push(cb);
     }

@@ -102,7 +102,10 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
     });
   });
 
+  $scope.dailyData = [];
+
   $http.get('/api/stock/' + symbol).success(function(data) {
+    $scope.dailyData = data;
 
     var dataMapped = _.map(data, function(el) {
       return [new Date(el.date), parseFloat(el.open.toFixed(2))];
@@ -126,6 +129,40 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
       }
     });
 
+    calculatePl();
+
   });
 
+  $scope.initialCapital = 10000;
+
+  function calculatePl() {
+    var data = $scope.dailyData;
+
+    var weekDate = _.find(data, function(el) {
+      return el.date == moment().subtract(1, 'week').format('yyyy-MM-dd')
+    });
+    var monthDate = _.find(data, function(el) {
+      return el.date == moment().subtract(1, 'month').format('yyyy-MM-dd')
+    });
+    var threeMonthDate = _.find(data, function(el) {
+      return el.date == moment().subtract(3, 'month').format('yyyy-MM-dd')
+    });
+    var yearDate = _.find(data, function(el) {
+      return el.date == moment().subtract(1, 'year').format('yyyy-MM-dd')
+    });
+    var fiveYearDate = _.find(data, function(el) {
+      return el.date == moment().subtract(5, 'year').format('yyyy-MM-dd')
+    });
+    
+
+    var ic = $scope.initialCapital;
+    $scope.pl = {
+      week: weekDate ? (weekDate.open * ic) : 'N/A'
+    };
+  }
+
+  calculatePl();
+  $scope.$watch('initialCapital', function() {
+    calculatePl();
+  });
 });

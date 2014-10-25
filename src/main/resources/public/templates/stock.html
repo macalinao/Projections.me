@@ -8,6 +8,8 @@
 
   <div class="row">
     <div class="col-md-4">
+
+      <h2 class="page-header">Details</h2>
       <table class="table table-striped">
         <tr>
           <th>Last</th>
@@ -26,6 +28,36 @@
           <td>{{stockData.eqyRecCons}}</td>
         </tr>
       </table>
+
+      <h2 class="page-header">P/L Calculator</h2>
+      <form>
+        <div class="form-group">
+          <input type="text" class="form-control" ng-model="initialCapital" placeholder="Initial capital ($)" />
+        </div>
+      </form>
+      <table class="table table-striped">
+        <tr>
+          <th>1 week P/L</th>
+          <td>{{pl.week}}</td>
+        </tr>
+        <tr>
+          <th>1 month P/L</th>
+          <td>{{pl.month}}</td>
+        </tr>
+        <tr>
+          <th>3 month P/L</th>
+          <td>{{pl.threeMonth}}</td>
+        </tr>
+        <tr>
+          <th>1 year P/L</th>
+          <td>{{pl.year}}</td>
+        </tr>
+        <tr>
+          <th>5 year P/L</th>
+          <td>{{pl.fiveYear}}</td>
+        </tr>
+      </table>
+
     </div>
     <div class="col-md-8">
       <div id="stockChart"></div>

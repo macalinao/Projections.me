@@ -1,79 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="projections">
+
 <head>
-  <link rel="stylesheet" type="text/css" href="css/reset.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="stylesheet" type="text/css" href="css/vex.css">
-  <link rel="stylesheet" type="text/css" href="css/vex-theme-flat-attack.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="css/animate.css">
-  <link rel="stylesheet" href="css/timeline/style.css">
+  <link rel="stylesheet" href="app.css">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
-  <title>Easy Backtester</title>
-</head>
-<body id="start">
-  <header class="main-header">
-    <div class="container">
-      <img class="logo" src="img/logo-white.png">
-    </div>
-  </header>
+  <title>Projections.me</title>
 
-  <div id="colorBg"></div>
-
-  <div id="preQuery">
-    <div class="command">
-      <div class="container">
-        <h1>Type your master trading plan as you would say to your broker</h1>
-        <input type="text" id="command-input" placeholder="Buy 10% when the security drops 40%">
-      </div>
-      <img class="down-arrow" src="img/down-arrow.png">
-    </div>
-    <div class="signals">
-      <header>
-        <h1>Trading Signals</h1>
-        <nav class="actions">
-          <a id="clearButton" class="clear" href="#">Reset</a>
-          <a id="goButton" class="go" href="#">Run Backtest</a>
-        </nav>
-      </header>
-      <div class="stuff">
-        <div class="empty" id="emptyL">
-          <h1>x</h1>
-          <h2>You have no signals here. Create your first signal above.</h2>
-        </div>
-        <ul id="rules">
-        </ul>
-      </div>
-    </div>
-    <div id="loadingSpinner" class="hide">
-      <div class="container">
-        <h1 class="post-head">Crunching numbers...</h1>
-      </div>
-    </div>
-  </div>
-
-  <div id="postQuery" class="hide">
-    <div class="container">
-      <div id="btResults">
-      </div>
-      <div id="newsHolder"></div>
-
-
-
-    </div>
-  </div>
-
-  <section id="cd-timeline" class="cd-container hide">
-  </section>
-
-  <footer>copyright 2014 easytester</footer>
 
   <script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/spin.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.11/angular-ui-router.min.js"></script>
   <script type="text/javascript" src="js/highstock.js"></script>
   <script type="text/javascript" src="js/lodash.min.js"></script>
-  <script type="text/javascript" src="js.js"></script>
-  
   <script type="text/javascript" src="js/modernizr.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+</head>
+
+<body>
+  <div ui-view></div>
 </body>
+
 </html>

@@ -25,3 +25,8 @@
 .strong-sell {
   background-color: #F24E4E;
 }
+
+td.rec {
+  color: #fff;
+  font-weight: bold;
+}

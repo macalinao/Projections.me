@@ -139,11 +139,7 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
 
   $scope.dailyData = [];
 
-  (new Spinner({
-    length: 100,
-    width: 30,
-    radius: 30
-  })).spin(document.getElementById('spinna'));
+  (new Spinner()).spin(document.getElementById('spinna'));
 
   $http.get('/api/stock/' + symbol).success(function(data) {
     $('#spinner').remove();

@@ -1,4 +1,4 @@
-package com.easybacktest.backend;
+package me.projections.site;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

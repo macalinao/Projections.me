@@ -38,7 +38,7 @@
           <td>
             <a ng-href="#/stock/{{item.symbol}}">{{item.name}}</a>
           </td>
-          <td>{{item[field.id]}}</td>
+          <td>{{item[field.id] | number:2}}</td>
         </tr>
       </table>
     </div>

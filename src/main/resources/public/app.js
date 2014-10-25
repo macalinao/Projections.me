@@ -100,6 +100,38 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
     $scope.stockData = _.find(data, function(el) {
       return el.symbol == symbol;
     });
+
+    var n = {};
+    var rating = $scope.stockData.eqyRecCons;
+
+    if (rating > 4.5) {
+      n = {
+        color: '#11644D',
+        text: 'Strong Buy'
+      };
+    } else if (rating > 3.75) {
+      n = {
+        color: '#A0B046',
+        text: 'Weak Buy'
+      };
+    } else if (rating > 3) {
+      n = {
+        color: '#F2C94E',
+        text: 'Hold'
+      };
+    } else if (rating > 2) {
+      n = {
+        color: '#F78145',
+        text: 'Weak Sell'
+      };
+    } else {
+      n = {
+        color: '#F24E4E',
+        text: 'Strong Sell'
+      };
+    }
+
+    $scope.stockData.ratingNice = n;
   });
 
   $scope.dailyData = [];
@@ -158,7 +190,7 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
     $scope.pl = {
       month: monthDate ? ((last - monthDate.open) / last) * ic : 'N/A',
       threeMonth: threeMonthDate ? ((last - threeMonthDate.open) / last) * ic : 'N/A',
-      year: yearDate ?  ((last - yearDate.open) / last) * ic : 'N/A',
+      year: yearDate ? ((last - yearDate.open) / last) * ic : 'N/A',
       fiveYear: fiveYearDate ? ((last - fiveYearDate.open) / last) * ic : 'N/A'
     };
   }

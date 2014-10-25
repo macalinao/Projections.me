@@ -7,7 +7,7 @@ angular.module('projections', ['ui.router'])
         controller: 'HomeCtrl'
       })
       .state('stock', {
-        url: '/stock/:stock',
+        url: '/stock/:symbol',
         templateUrl: 'templates/stock.html',
         controller: 'StockCtrl'
       });
@@ -60,4 +60,15 @@ angular.module('projections', ['ui.router'])
 
     $scope.$watch('field', updateLists);
     updateLists();
+  })
+
+.controller('StockCtrl', function($scope, $http, $routeParams) {
+  var symbol = $routeParams.symbol;
+
+  $scope.stockData = {};
+  $http.get('/api/all').success(function(data) {
+    $scope.stockData = _.find(data, function(el) {
+      return el.symbol == symbol;
+    });
   });
+});

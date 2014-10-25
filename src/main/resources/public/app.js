@@ -39,7 +39,29 @@ angular.module('projections', ['ui.router'])
     }];
   })
 
-.controller('HomeCtrl', function($scope, fields, $http) {
+.factory('allData', function($http) {
+  var ret = {
+    data: [],
+    subs: [],
+    subscribe: function(cb) {
+      if (this.data.length > 0) {
+        cb(this.data);
+      }
+      this.subs.push(cb);
+    }
+  };
+
+  $http.get('/api/all').success(function(data) {
+    for (var i = 0; i < ret.subs.length; i++) {
+      ret.subs[i](data);
+    }
+    ret.data = data;
+  });
+
+  return ret;
+})
+
+.controller('HomeCtrl', function($scope, fields, $http, allData) {
   $scope.fields = fields;
   $scope.field = fields[0];
 
@@ -48,7 +70,7 @@ angular.module('projections', ['ui.router'])
 
   function updateLists() {
     var fieldId = $scope.field.id;
-    $http.get('/api/all').success(function(data) {
+    allData.subscribe(function(data) {
       $scope.best = _.first(data.sort(function(a, b) {
         return b[fieldId] - a[fieldId];
       }), 10);
@@ -62,11 +84,11 @@ angular.module('projections', ['ui.router'])
   updateLists();
 })
 
-.controller('StockCtrl', function($scope, $http, $stateParams) {
+.controller('StockCtrl', function($scope, $http, $stateParams, allData) {
   var symbol = $stateParams.symbol;
 
   $scope.stockData = {};
-  $http.get('/api/all').success(function(data) {
+  allData.subscribe(function(data) {
     $scope.stockData = _.find(data, function(el) {
       return el.symbol == symbol;
     });

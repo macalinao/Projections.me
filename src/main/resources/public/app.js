@@ -136,6 +136,7 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
   $scope.initialCapital = 10000;
 
   function calculatePl() {
+    var last = $scope.stockData.last;
     var data = $scope.dailyData;
     window.dailyData = data;
 
@@ -155,10 +156,10 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
 
     var ic = $scope.initialCapital;
     $scope.pl = {
-      month: monthDate ? (monthDate.open * ic) : 'N/A',
-      threeMonth: threeMonthDate ? (threeMonthDate.open * ic) : 'N/A',
-      year: yearDate ? (yearDate.open * ic) : 'N/A',
-      fiveYear: fiveYearDate ? (fiveYearDate.open * ic) : 'N/A'
+      month: monthDate ? ((last - monthDate.open) * ic) : 'N/A',
+      threeMonth: threeMonthDate ? ((last - threeMonthDate.open) * ic) : 'N/A',
+      year: yearDate ? ((last - yearDate.open) * ic) : 'N/A',
+      fiveYear: fiveYearDate ? ((last - fiveYearDate.open) * ic) : 'N/A'
     };
   }
 

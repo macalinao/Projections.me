@@ -62,8 +62,8 @@ angular.module('projections', ['ui.router'])
   updateLists();
 })
 
-.controller('StockCtrl', function($scope, $http, $routeParams) {
-  var symbol = $routeParams.symbol;
+.controller('StockCtrl', function($scope, $http, $stateParams) {
+  var symbol = $stateParams.symbol;
 
   $scope.stockData = {};
   $http.get('/api/all').success(function(data) {

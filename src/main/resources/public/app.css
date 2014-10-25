@@ -120,4 +120,30 @@ a, i.ionicons {
 	left: 0;
 	margin: 20px;
 	font-size: 1.5em;
+	left: 0;
+}
+.back:hover {
+	left: -10px;
+	text-decoration: none;
+}
+.twitter-typeahead {
+	width: 100%;
+}
+.tt-dropdown-menu {
+	margin: 10px 20px;
+}
+.tt-suggestions > .tt-suggestion:nth-child(1) p {
+	color: rgba(255,255,255,1) !important;
+}
+.tt-suggestions > .tt-suggestion:nth-child(2) p {
+	color: rgba(255,255,255,0.8) !important;
+}
+.tt-suggestions > .tt-suggestion:nth-child(3) p {
+	color: rgba(255,255,255,0.6) !important;
+}
+.tt-suggestions > .tt-suggestion:nth-child(4) p {
+	color: rgba(255,255,255,0.4) !important;
+}
+.tt-suggestions > .tt-suggestion:nth-child(5) p {
+	color: rgba(255,255,255,0.2) !important;
 }

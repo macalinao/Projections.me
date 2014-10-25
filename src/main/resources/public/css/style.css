@@ -15,6 +15,20 @@ footer {
 	font-size: 14px;
 }
 
+/*slide*/
+/* Chrome, Safari, Opera */
+@-webkit-keyframes fromLeft {
+    from {opacity: 0; left: -40px;}
+    to {opacity: 1; left: 0;}
+}
+
+/* Standard syntax */
+@keyframes fromLeft {
+    from {opacity: 0; left: -40px;}
+    to {opacity: 1; left: 0;}
+}
+
+
 .logo {
 	height: 60px;
 }
@@ -25,22 +39,39 @@ footer {
 }
 
 #splash .logo {
-	margin: 30px 0 0 50px;
+	margin-bottom: 50px;
 	position: relative;
 	z-index: 10;
-}
-
-#splash h1 {
-	font-size: 58px;
-	position: absolute;
-	text-transform: uppercase;
-	color: #fff;
-	background: #000;
-	font-weight: bold;
-	padding: 8px 24px;
 	left: 0;
-	bottom: 80px;
+	-webkit-animation:  fromLeft 0.6s; /* Chrome, Safari, Opera */
+    animation: fromLeft 0.6s;
+}
+header.main {
+	position: absolute;
+	top: 100px;
+	left: 15%;
+	width: 400px;
+}
+#splash h1 {
+	font-size: 45px;
+	text-transform: uppercase;
+	color: #FFF;
+	background: rgba(0,0,0,0.4);
+	font-weight: bold;
+	padding: 10px 20px;
+	margin: 5px 0;
+	display: inline-block;
 	line-height: 1.2;
+	position: relative;
+	left: 0;
+}
+#splash h1.one {
+	-webkit-animation:  fromLeft 1s; /* Chrome, Safari, Opera */
+    animation: fromLeft 1s;
+}
+#splash h1.two {
+	-webkit-animation:  fromLeft 1.5s; /* Chrome, Safari, Opera */
+    animation: fromLeft 1.5s;
 }
 
 #splash .begin {
@@ -53,26 +84,23 @@ footer {
 	font-weight: bold;
 	padding: 8px 24px;
 	right: 0;
-	top: 80px;
+	bottom: 80px;
 	line-height: 1.2;
 }
 
 #splash #sideDesc {
-	font-size: 38px;
+	font-size: 25px;
 	text-transform: uppercase;
-	position: absolute;
-	color: #000;
+	color: #FFF;
 	font-weight: bold;
-	padding-right: 24px;
-	right: 0;
-	bottom: 80px;
-	text-align: right;
-	line-height: 1.2;
+	line-height: 2;
+	margin: 10px 0;
 	width: 400px;
-	-webkit-animation-duration: 4s;
-	-webkit-animation-delay: 2s;
+	position: relative;
+	left: 0;
+	-webkit-animation:  fromLeft 2s; /* Chrome, Safari, Opera */
+    animation: fromLeft 2s;
 }
-
 #start {
 	background: #E5E5E5;
 }

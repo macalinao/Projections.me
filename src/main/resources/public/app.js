@@ -1,4 +1,4 @@
-angular.module('projections', ['ui.router'])
+angular.module('projections', ['ui.bootstrap', 'ui.router'])
   .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {

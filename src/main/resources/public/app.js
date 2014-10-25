@@ -72,5 +72,31 @@ angular.module('projections', ['ui.router'])
     });
   });
 
+  $http.get('/api/stock/' + symbol).success(function(data) {
+
+    var dataMapped = _.map(data, function(el) {
+      return [el.date, el.open];
+    });
+
+    $('#stockChart').highcharts('StockChart', {
+      rangeSelector: {
+        selected: 100000
+      },
+      title: {
+        text: 'Stock Data'
+      },
+      series: [{
+        name: 'Price',
+        data: dataMapped
+      }],
+      tooltip: {
+        formatter: function() {
+          var item = dataIdx[(new Date(this.points[0].x)).getTime()];
+          //          return Highcharts.dateFormat('%b %d, %Y', this.x) + '<br />' + '<b>Value:</b> $' + this.points[0].y.toFixed(2) + '<br />' + '<b>Value (benchmark):</b> $' + this.points[1].y.toFixed(2) + '<br />' + '<b>% Diff:</b> ' + ((this.points[1].y - this.points[0].y) / this.points[1].y * -100).toFixed(2) + '%<br />' + '<b>Shares:</b> ' + item.shares + '<br />' + '<b>Cash:</b> $' + item.cash.toFixed(2) + '<br />' + '<b>Open:</b> $' + item.open.toFixed(2);
+        }
+      }
+    });
+
+  });
 
 });

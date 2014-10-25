@@ -14,5 +14,18 @@ angular.module('projections', ['ui.router'])
 
   $urlRouterProvider.otherwise('/');
 })
-.controller('HomeCtrl', function($scope) {
+.factory('fields', function() {
+  return {
+    last: 'Last',
+    high: 'High',
+    low: 'Low',
+    close: 'Close',
+    newsSentiment: 'News Sentiment',
+    twitterSentiment: 'Twitter Sentiment',
+    eqyRecCons: 'Buy Rating'
+  };
+})
+.controller('HomeCtrl', function($scope, fields) {
+  $scope.fields = fields;
+  $scope.field = 'eqyRecCons';
 });

@@ -21,6 +21,9 @@ angular.module('projections', ['ui.bootstrap', 'ui.router'])
     id: 'eqyRecCons',
     name: 'Buy Rating'
   }, {
+    id: 'marketCap',
+    name: 'Market Cap (millions)'
+  }, {
     id: 'last',
     name: 'Last'
   }, {

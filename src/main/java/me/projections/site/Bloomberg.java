@@ -91,6 +91,7 @@ public class Bloomberg {
         Element fields = request.getElement("fields");
         fields.appendValue("LONG_COMPANY_NAME_REALTIME");
         fields.appendValue("LOCAL_EXCHANGE_SYMBOL_REALTIME");
+        fields.appendValue("LOCAL_EXCHANGE_SYMBOL_REALTIME");
         fields.appendValue("PX_LAST");
         fields.appendValue("PX_HIGH");
         fields.appendValue("PX_LOW");
@@ -99,6 +100,7 @@ public class Bloomberg {
         fields.appendValue("TWITTER_SENTIMENT_REALTIME");
         fields.appendValue("VWAP_STANDARD_DEV_RT");
         fields.appendValue("EQY_REC_CONS");
+        fields.appendValue("CUR_MKT_CAP");
 
         CorrelationID theCid;
         try {
@@ -146,6 +148,7 @@ public class Bloomberg {
                         data.put("twitterSentiment", fieldData.getElementAsFloat64("TWITTER_SENTIMENT_REALTIME"));
                         data.put("vwapStdDev", fieldData.getElementAsFloat64("VWAP_STANDARD_DEV_RT"));
                         data.put("eqyRecCons", fieldData.getElementAsFloat64("EQY_REC_CONS"));
+                        data.put("marketCap", fieldData.getElementAsFloat64("CUR_MKT_CAP"));
 
                         ret.add(data);
                     } catch (Exception e) {

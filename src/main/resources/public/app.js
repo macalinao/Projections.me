@@ -91,7 +91,6 @@ angular.module('projections', ['ui.router'])
 
   $scope.stockData = {};
   allData.subscribe(function(data) {
-    console.log(data);
     $scope.stockData = _.find(data, function(el) {
       return el.symbol == symbol;
     });
@@ -100,7 +99,7 @@ angular.module('projections', ['ui.router'])
   $http.get('/api/stock/' + symbol).success(function(data) {
 
     var dataMapped = _.map(data, function(el) {
-      return [new Date(el.date), el.open];
+      return [new Date(el.date), parseFloat(el.open.toFixed(2))];
     });
 
     $('#stockChart').highcharts('StockChart', {
@@ -113,7 +112,12 @@ angular.module('projections', ['ui.router'])
       series: [{
         name: 'Price',
         data: dataMapped
-      }]
+      }],
+      tooltip: {
+        formatter: function() {
+          return Highcharts.dateFormat('%b %d, %Y', this.x) + ' - $' + this.y.toFixed(2);
+        }
+      }
     });
 
   });
